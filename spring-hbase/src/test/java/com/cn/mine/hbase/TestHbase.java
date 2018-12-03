@@ -3,6 +3,7 @@ package com.cn.mine.hbase;
 import javax.annotation.Resource;
 
 import org.apache.hadoop.hbase.client.Put;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.hadoop.hbase.HbaseTemplate;
@@ -17,7 +18,7 @@ public class TestHbase {
 	String tname = "ne_can";
 	String fname = "can";
 	
-	@org.junit.Test
+	@Test
 	public void test(){
 		System.out.println(1);
 		Put put = new Put("aa_test".getBytes());
