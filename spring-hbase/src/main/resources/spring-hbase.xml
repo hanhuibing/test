@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:hdp="http://www.springframework.org/schema/hadoop" xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/hadoop http://www.springframework.org/schema/hadoop/spring-hadoop.xsd">
+
+    <hdp:configuration id="hadoopConfiguration"/>
+
+    <hdp:hbase-configuration id="hbaseConfiguration" zk-quorum="${spring.data.hadoop.zk.quorum}"
+                             delete-connection="false">
+        zookeeper.znode.parent=${spring.data.hadoop.znode.parent}
+        hbase.rpc.timeout=${spring.data.hadoop.hbase.rpc.timeout}
+        hbase.client.operation.timeout=${spring.data.hadoop.hbase.client.operation.timeout}
+        hbase.client.scanner.timeout.period=${spring.data.hadoop.hbase.client.scanner.timeout.period}
+        ipc.client.connect.timeout=${spring.data.hadoop.ipc.client.connect.timeout}
+    </hdp:hbase-configuration>
+
+    <bean id="hbaseTemplate" class="org.springframework.data.hadoop.hbase.HbaseTemplate">
+        <property name="configuration" ref="hbaseConfiguration"/>
+    </bean>
+
+</beans>
