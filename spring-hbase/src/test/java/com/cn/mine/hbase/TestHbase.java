@@ -10,7 +10,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class Test {
+public class TestHbase {
 	@Resource(name="hbaseTemplate")
 	HbaseTemplate hbaseTemplate;
 	
@@ -30,4 +30,5 @@ public class Test {
 		});
 		System.out.println(2);
 	}
+	
 }
