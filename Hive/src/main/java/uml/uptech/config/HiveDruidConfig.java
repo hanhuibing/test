@@ -9,7 +9,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
  
 import com.alibaba.druid.pool.DruidDataSource;
- 
+
+
+/**
+ * @ConfigurationProperties  属性必须带有getter, setter 方法，否则注入失败
+ * */
 @Configuration
 @ConfigurationProperties(prefix = "hive")
 public class HiveDruidConfig {
@@ -55,9 +59,7 @@ public class HiveDruidConfig {
 		datasource.setMaxPoolPreparedStatementPerConnectionSize(maxPoolPreparedStatementPerConnectionSize);
 		return datasource;
 	}
-	
-	// 此处省略各个属性的get和set方法
- 
+	 
 	@Bean(name = "hiveDruidTemplate")
 	public JdbcTemplate hiveDruidTemplate(@Qualifier("hiveDruidDataSource") DataSource dataSource) {
 		return new JdbcTemplate(dataSource);
