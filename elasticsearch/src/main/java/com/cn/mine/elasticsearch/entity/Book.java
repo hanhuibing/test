@@ -6,7 +6,6 @@ import org.springframework.data.elasticsearch.annotations.Document;
 /**
  * 加上了@Document注解之后，默认情况下这个实体中所有的属性都会被建立索引、并且分词
  */
-//http://120.79.197.131:9200/product
 @Document(indexName = "product", type = "book")
 public class Book {
 	@Id
