@@ -22,10 +22,12 @@ public class KafkaConsumerDemo {
 	
 	public static void main(String[] args) throws Exception {
 		final StreamExecutionEnvironment evn = StreamExecutionEnvironment.getExecutionEnvironment();
+		
 		evn.enableCheckpointing(5000);
 		
 		evn.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
 		
+		//仅消费一次
 		evn.getCheckpointConfig().setCheckpointingMode(CheckpointingMode.EXACTLY_ONCE);
 		
 		List<String> topics = new ArrayList<>();
