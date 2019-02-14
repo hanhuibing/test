@@ -6,6 +6,7 @@ import java.util.Properties;
 import org.apache.flink.api.common.functions.FlatMapFunction;
 import org.apache.flink.api.common.serialization.SimpleStringSchema;
 import org.apache.flink.api.java.tuple.Tuple2;
+import org.apache.flink.core.fs.FileSystem.WriteMode;
 import org.apache.flink.streaming.api.CheckpointingMode;
 import org.apache.flink.streaming.api.TimeCharacteristic;
 import org.apache.flink.streaming.api.datastream.DataStream;
@@ -42,12 +43,16 @@ public class KafkaConsumerDemo {
         
 		FlinkKafkaConsumer09<String> consumer = new FlinkKafkaConsumer09<>(topics, new SimpleStringSchema(), props);
 				
-		//consumer.setStartFromEarliest(); //读取位置
-		consumer.setStartFromGroupOffsets();
+		consumer.setStartFromEarliest(); //读取位置
+		//consumer.setStartFromGroupOffsets();
 		consumer.assignTimestampsAndWatermarks(new MessageWaterEmitter());
 		
 		DataStream<String> keyedStream = evn.addSource(consumer);
+		
+		//控制台打印
 		keyedStream.print();
+		//输出到文件
+		//keyedStream.writeAsText("file:///D:\\flink\\test77.txt").setParallelism(1);
 		
 		evn.execute("Flink-Kafka demo");
 		
