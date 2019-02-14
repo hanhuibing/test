@@ -12,7 +12,9 @@ import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer09;
 import org.apache.flink.util.Collector;
-
+/**
+ * read message from kafka ,print receive message to window
+ * */
 public class KafkaConsumerDemo {
 	public static String BOOTSTRAP_SERVERS="cdh-kafka1:9092,cdh-kafka2:9092,cdh-kafka3:9092";
 	//public static String ZOOKEEPER_CONNECT="cdh0:2181,cdh1:2181,cdh2:2181";
