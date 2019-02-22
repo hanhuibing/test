@@ -118,17 +118,4 @@
         <appender-ref ref="INFO"/>
         <appender-ref ref="DEBUG"/>
     </root>
-
-    <logger name="sunyu" level="ALL" additivity="false">
-        <appender-ref ref="CONSOLE"/>
-        <appender-ref ref="ERROR"/>
-        <appender-ref ref="MYINFO"/>
-        <appender-ref ref="DEBUG"/>
-    </logger>
-    <logger name="uml" level="ALL" additivity="false">
-        <appender-ref ref="CONSOLE"/>
-        <appender-ref ref="ERROR"/>
-        <appender-ref ref="MYINFO"/>
-        <appender-ref ref="DEBUG"/>
-    </logger>
 </configuration>
