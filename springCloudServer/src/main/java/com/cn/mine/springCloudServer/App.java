@@ -6,16 +6,21 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.config.server.EnableConfigServer;
 
 /**
- * Hello world!
+ *  spring cloud config server demo
  *
  */
 @SpringBootApplication
-@EnableDiscoveryClient
 @EnableConfigServer
 public class App 
 {
     public static void main( String[] args )
     {
         SpringApplication.run(App.class, args);
+
+        /***
+         * 测试地址:
+         *    http://localhost:8888/config/test-dev.properties
+         *    http://localhost:8888/test/dev
+         */
     }
 }
